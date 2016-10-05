@@ -1,0 +1,52 @@
+﻿<Window x:Class="BasicNotepad.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BasicNotepad"
+        mc:Ignorable="d"
+        x:Name="mainWindow" Title="Untitled - Notepad" Height="345.368" Width="965.776" Background="#FFFBFBFB">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22" />
+            <RowDefinition />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <Menu Grid.Column="0" Grid.Row="0" Height="22" VerticalAlignment="Top">
+            <MenuItem Header="_File">
+                <MenuItem x:Name="NewMenu" Header="_New" ToolTip="Creates a new file" InputGestureText="CTRL+N" Click="MenuHandler_Click">
+                </MenuItem>
+                <MenuItem x:Name="OpenMenu" Header="_Open" ToolTip="Opens a new file" InputGestureText="CTRL+O" Click="MenuHandler_Click">
+                </MenuItem>
+                <MenuItem x:Name="SaveMenu" Header="_Save" ToolTip="Saves the current file" InputGestureText="CTRL+S" Click="MenuHandler_Click"/>
+                <MenuItem x:Name="SaveAsMenu" Header="Save _As" ToolTip="Saves the current file" Click="MenuHandler_Click"/>
+                <Separator/>
+                <MenuItem x:Name="ExitMenu" Header="E_xit" ToolTip="Exits the program" Click="MenuHandler_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Command="Undo" />
+                <MenuItem Command="Redo" />
+                <Separator/>
+                <MenuItem Command="Cut" />
+                <MenuItem Command="Copy" />
+                <MenuItem Command="Paste" />
+                <Separator/>
+                <MenuItem Command="SelectAll" />
+            </MenuItem>
+            <MenuItem Header="_Visible">
+                <MenuItem x:Name="LineColStatusMenu" Header="Line/Column Info" Click="MenuHandler_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <TextBox x:Name="documentText" Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" KeyDown="documentText_KeyDown" IsKeyboardFocusWithinChanged="documentText_IsKeyboardFocusWithinChanged" AcceptsReturn="True" AcceptsTab="True" Margin="0,-0.723,0,0.723" />
+
+        <StatusBar x:Name="mainStatusBar" Grid.Column="0" Grid.Row="2">
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock x:Name="LineColumnStatusText" Text="Ln 0, Col 0" />
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
